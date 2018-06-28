@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+.panel {
+    background-color: #eee;
+}
+
+.row {
+    margin-top: 10px;
+}
+
+.right-align {
+    text-align: right;
+}

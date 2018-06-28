@@ -14,8 +14,7 @@
     "eofline": true,
     "forin": true,
     "import-blacklist": [
-      true,
-      "rxjs"
+      true
     ],
     "import-spacing": true,
     "indent": [
@@ -110,13 +109,13 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      "op",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      "op",
       "kebab-case"
     ],
     "use-input-property-decorator": true,
