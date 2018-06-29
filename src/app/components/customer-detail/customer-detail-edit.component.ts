@@ -26,8 +26,7 @@ export class CustomerDetailEditComponent implements OnChanges {
     }
 
     public save(): void {
-        // TODO: Why doesn't this update other instances?
-        this.customer = this.mutableCustomer;
+        Object.assign(this.customer, this.mutableCustomer);
     }
 
     public cancel(): void {
