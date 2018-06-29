@@ -16,12 +16,12 @@ export class CustomerDetailViewComponent implements OnInit {
 
     constructor(
         private customerTypeService: CustomerTypeService,
-        private industryTypeService: IndustryService,
+        private industryService: IndustryService,
     ) {}
 
     public ngOnInit(): void {
         this.customerTypeService.getAll().subscribe(x => this.customerTypes = x);
-        this.industryTypeService.getAll().subscribe(x => this.industryTypes = x);
+        this.industryService.getAll().subscribe(x => this.industryTypes = x);
     }
 
     public getCustomerType(id: number): Lookup {
