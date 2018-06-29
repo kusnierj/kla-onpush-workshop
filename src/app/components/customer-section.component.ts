@@ -1,5 +1,6 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { Customer } from '../model';
+import { CustomerService } from '../services/customer.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.Default,
@@ -11,4 +12,12 @@ export class CustomerSectionComponent {
     @Input() public isExpanded = true;
 
     public isEdit = false;
+
+    constructor(
+        private customerService: CustomerService,
+    ) {}
+
+    public findCustomer(customerId: number): Customer {
+        return this.customerService.findById(customerId);
+    }
 }

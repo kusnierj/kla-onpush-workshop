@@ -1,45 +1,52 @@
 <div class="row">
     <div class="col-md-6">
-        <op-column label="Name:"><input type="text" [(ngModel)]="customer.name" /></op-column>
+        <op-column label="Name:"><input type="text" [(ngModel)]="mutableCustomer.name" /></op-column>
     </div>
     <div class="col-md-6">
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
-        <op-column label="Address 1:"><input type="text" [(ngModel)]="customer.address1" /></op-column>
+        <op-column label="Address 1:"><input type="text" [(ngModel)]="mutableCustomer.address1" /></op-column>
     </div>
     <div class="col-md-6">
+        <!-- TODO: Missed reference, still "customer" -->
         <op-column label="Address 2:"><input type="text" [(ngModel)]="customer.address2" /></op-column>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
-        <op-column label="City:"><input type="text" [(ngModel)]="customer.city" /></op-column>
+        <op-column label="City:"><input type="text" [(ngModel)]="mutableCustomer.city" /></op-column>
     </div>
     <div class="col-md-6">
-        <op-column label="State:"><input type="text" [(ngModel)]="customer.state" /></op-column>
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-6">
-        <op-column label="Zip:"><input type="text" [(ngModel)]="customer.zip" /></op-column>
-    </div>
-    <div class="col-md-6">
+        <op-column label="State:"><input type="text" [(ngModel)]="mutableCustomer.state" /></op-column>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
-        <op-column label="Is Active?"><input type="text" [(ngModel)]="customer.is_active" /></op-column>
+        <op-column label="Zip:"><input type="text" [(ngModel)]="mutableCustomer.zip" /></op-column>
     </div>
     <div class="col-md-6">
     </div>
 </div>
 <div class="row">
     <div class="col-md-6">
-        <op-column label="Type:"><input type="text" [(ngModel)]="customer.customer_type_id" /></op-column>
+        <op-column label="Is Active?"><input type="text" [(ngModel)]="mutableCustomer.is_active" /></op-column>
     </div>
     <div class="col-md-6">
-        <op-column label="Industry:"><input type="text" [(ngModel)]="customer.industry_id" /></op-column>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <op-column label="Type:"><input type="text" [(ngModel)]="mutableCustomer.customer_type_id" /></op-column>
+    </div>
+    <div class="col-md-6">
+        <op-column label="Industry:"><input type="text" [(ngModel)]="mutableCustomer.industry_id" /></op-column>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 float-right">
+        <button class="btn btn-primary" (click)="save()">Save</button>
+        <button class="btn btn-default" (click)="cancel()">Cancel</button>
     </div>
 </div>

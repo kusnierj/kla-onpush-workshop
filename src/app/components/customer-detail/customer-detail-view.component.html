@@ -37,9 +37,9 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <op-column label="Type:">{{ customer.customer_type_id }}</op-column>
+        <op-column label="Type:">{{ getCustomerType(customer.customer_type_id)?.text }}</op-column>
     </div>
     <div class="col-md-6">
-        <op-column label="Industry:">{{ customer.industry_id }}</op-column>
+        <op-column label="Industry:">{{ getIndustryType(customer.industry_id)?.text }}</op-column>
     </div>
 </div>

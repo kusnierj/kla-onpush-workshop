@@ -21,9 +21,9 @@ export class CustomerService {
             const relationsCount = Math.floor(Math.random() * 10);
             const relationIds = [];
             for (let j = 0; j < relationsCount; j++) {
-                const newReleationId = Math.floor(Math.random() * (this.nextCustomerId - 1));
-                if (!relationIds.includes(newReleationId)) {
-                    relationIds.push(newReleationId);
+                const newRelationId = Math.floor(Math.random() * (this.nextCustomerId - 2) + 1);
+                if (!relationIds.includes(newRelationId) && newRelationId > 0) {
+                    relationIds.push(newRelationId);
                 }
             }
 

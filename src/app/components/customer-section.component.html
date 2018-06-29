@@ -4,6 +4,8 @@
             <div class="row">
                 <div class="col-sm-8">
                     {{ customer.name }}
+
+                    <div class="badge badge-info" *ngIf="customer.related_customer_ids?.length >= 1">{{customer.related_customer_ids?.length}}</div>
                 </div>
                 <div class="col-sm-4 right-align">
                     <button class="btn" (click)="isExpanded = !isExpanded">{{ isExpanded ? "Collapse" : "Expand" }}</button>
@@ -22,7 +24,7 @@
 
             <button class="btn right-align" (click)="isEdit = !isEdit">{{ isEdit ? "View" : "Edit" }}</button>
 
-            <op-customer-section *ngFor="let customerId of customer.related_customer_ids" [customer]="customer" [isExpanded]="false"></op-customer-section>
+            <op-customer-section *ngFor="let customerId of customer.related_customer_ids" [customer]="findCustomer(customerId)" [isExpanded]="false"></op-customer-section>
         </div>
     </div>
 </div>
