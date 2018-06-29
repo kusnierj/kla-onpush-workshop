@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-sm-12">
-        <div class="panel">
+        <div class="panel-header">
             <div class="row">
                 <div class="col-sm-8">
                     {{ customer.name }}
@@ -11,104 +11,18 @@
             </div>
         </div>
 
-        <div *ngIf="isExpanded">
+        <div *ngIf="isExpanded" class="panel-body">
             <ng-container *ngIf="isEdit;else readOnlyTpl">
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Name:"><input type="text" [(ngModel)]="customer.name" /></op-column>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Address 1:"><input type="text" [(ngModel)]="customer.address1" /></op-column>
-                    </div>
-                    <div class="col-md-6">
-                        <op-column label="Address 2:"><input type="text" [(ngModel)]="customer.address2" /></op-column>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="City:"><input type="text" [(ngModel)]="customer.city" /></op-column>
-                    </div>
-                    <div class="col-md-6">
-                        <op-column label="State:"><input type="text" [(ngModel)]="customer.state" /></op-column>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Zip:"><input type="text" [(ngModel)]="customer.zip" /></op-column>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Is Active?"><input type="text" [(ngModel)]="customer.is_active" /></op-column>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Type:"><input type="text" [(ngModel)]="customer.customer_type_id" /></op-column>
-                    </div>
-                    <div class="col-md-6">
-                        <op-column label="Industry:"><input type="text" [(ngModel)]="customer.industry_id" /></op-column>
-                    </div>
-                </div>
+                <op-customer-detail-edit [customer]="customer"></op-customer-detail-edit>
             </ng-container>
             
             <ng-template #readOnlyTpl>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Name:">{{ customer.name }}</op-column>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Address 1:">{{ customer.address1 }}</op-column>
-                    </div>
-                    <div class="col-md-6">
-                        <op-column label="Address 2:">{{ customer.address2 }}</op-column>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="City:">{{ customer.city }}</op-column>
-                    </div>
-                    <div class="col-md-6">
-                        <op-column label="State:">{{ customer.state }}</op-column>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Zip:">{{ customer.zip }}</op-column>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Is Active?">{{ customer.is_active }}</op-column>
-                    </div>
-                    <div class="col-md-6">
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6">
-                        <op-column label="Type:">{{ customer.customer_type_id }}</op-column>
-                    </div>
-                    <div class="col-md-6">
-                        <op-column label="Industry:">{{ customer.industry_id }}</op-column>
-                    </div>
-                </div>
+                <op-customer-detail-view [customer]="customer"></op-customer-detail-view>
             </ng-template>
 
             <button class="btn right-align" (click)="isEdit = !isEdit">{{ isEdit ? "View" : "Edit" }}</button>
+
+            <op-customer-section *ngFor="let customerId of customer.related_customer_ids" [customer]="customer" [isExpanded]="false"></op-customer-section>
         </div>
     </div>
 </div>

@@ -8,7 +8,7 @@ import { Customer } from '../model';
 })
 export class CustomerSectionComponent {
     @Input() public customer: Customer;
+    @Input() public isExpanded = true;
 
     public isEdit = false;
-    public isExpanded = true;
 }

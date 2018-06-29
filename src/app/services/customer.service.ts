@@ -18,10 +18,10 @@ export class CustomerService {
     public getMore(amountToLoad: number): Observable<Customer[]> {
         const customerList: Customer[] = [];
         for (let i = 0; i < amountToLoad; i++) {
-            let relationsCount = Math.floor(Math.random() * 10);
-            let relationIds = [];
+            const relationsCount = Math.floor(Math.random() * 10);
+            const relationIds = [];
             for (let j = 0; j < relationsCount; j++) {
-                let newReleationId = Math.floor(Math.random() * (this.nextCustomerId - 1));
+                const newReleationId = Math.floor(Math.random() * (this.nextCustomerId - 1));
                 if (!relationIds.includes(newReleationId)) {
                     relationIds.push(newReleationId);
                 }
@@ -50,7 +50,7 @@ export class CustomerService {
         return Observable.of(customerList);
     }
 
-    public find(customer_id: number): Customer {
+    public findById(customer_id: number): Customer {
         return this.allCustomers.find(c => c.customer_id === customer_id);
     }
 }

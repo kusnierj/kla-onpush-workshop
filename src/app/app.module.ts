@@ -10,12 +10,16 @@ import { CustomerService } from './services/customer.service';
 import { CustomerTypeService } from './services/customer-type.service';
 import { IndustryService } from './services/industry.service';
 import { WordService } from './services/word.service';
+import { CustomerDetailEditComponent } from './components/customer-detail/customer-detail-edit.component';
+import { CustomerDetailViewComponent } from './components/customer-detail/customer-detail-view.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         ColumnComponent,
-        CustomerSectionComponent
+        CustomerDetailEditComponent,
+        CustomerDetailViewComponent,
+        CustomerSectionComponent,
     ],
     imports: [
         BrowserModule,
