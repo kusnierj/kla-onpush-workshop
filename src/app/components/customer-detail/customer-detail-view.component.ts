@@ -25,10 +25,12 @@ export class CustomerDetailViewComponent implements OnInit {
     }
 
     public getCustomerType(id: number): Lookup {
+        if (!this.customerTypes) { return; }
         return this.customerTypes.find(x => x.id === id);
     }
 
     public getIndustryType(id: number): Lookup {
+        if (!this.industryTypes) { return; }
         return this.industryTypes.find(x => x.id === id);
     }
 }

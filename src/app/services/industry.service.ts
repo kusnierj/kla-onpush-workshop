@@ -35,6 +35,7 @@ export class IndustryService {
      * Simulates HTTP request.
      */
     public getAll(): Observable<Lookup[]> {
-        return Observable.of([...this.staticList, ...this.additionalGibberishIndustries]);
+        console.log('industryService.getAll()');
+        return Observable.of([...this.staticList, ...this.additionalGibberishIndustries]).delay(2500);
     }
 }
