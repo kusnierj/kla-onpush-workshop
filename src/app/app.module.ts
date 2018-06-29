@@ -14,6 +14,7 @@ import { CustomerDetailEditComponent } from './components/customer-detail/custom
 import { CustomerDetailViewComponent } from './components/customer-detail/customer-detail-view.component';
 import { SelectComponent } from './components/inputs/select.component';
 import { AutoCompleteComponent } from './components/inputs/auto-complete.component';
+import { FindCustomerPipe } from './find-customer.pipe';
 
 @NgModule({
     declarations: [
@@ -23,6 +24,7 @@ import { AutoCompleteComponent } from './components/inputs/auto-complete.compone
         CustomerDetailEditComponent,
         CustomerDetailViewComponent,
         CustomerSectionComponent,
+        FindCustomerPipe,
         SelectComponent,
     ],
     imports: [

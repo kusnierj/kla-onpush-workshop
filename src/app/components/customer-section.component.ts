@@ -16,8 +16,4 @@ export class CustomerSectionComponent {
     constructor(
         private customerService: CustomerService,
     ) {}
-
-    public findCustomer(customerId: number): Customer {
-        return this.customerService.findById(customerId);
-    }
 }
