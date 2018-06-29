@@ -15,7 +15,7 @@
 
         <div *ngIf="isExpanded" class="panel-body">
             <ng-container *ngIf="isEdit;else readOnlyTpl">
-                <op-customer-detail-edit [customer]="customer"></op-customer-detail-edit>
+                <op-customer-detail-edit [customer]="customer" (customerChange)="onCustomerChanged($event)"></op-customer-detail-edit>
             </ng-container>
             
             <ng-template #readOnlyTpl>

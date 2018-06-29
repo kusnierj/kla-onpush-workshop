@@ -29,6 +29,7 @@ export class CustomerDetailViewComponent implements OnInit {
     }
 
     public getIndustryType(id: number): Lookup {
+        console.log('getInstrusyType');
         return this.industryTypes.find(x => x.id === id);
     }
 }

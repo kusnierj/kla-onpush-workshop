@@ -40,6 +40,6 @@
         <op-column label="Type:">{{ getCustomerType(customer.customer_type_id)?.text }}</op-column>
     </div>
     <div class="col-md-6">
-        <op-column label="Industry:">{{ getIndustryType(customer.industry_id)?.text }}</op-column>
+        <op-column label="Industry:">{{ customer.industry_id | beFaster }}</op-column>
     </div>
 </div>

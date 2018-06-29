@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <op-customer-section *ngFor="let customer of customerList" [customer]="customer">
+    <op-customer-section *ngFor="let customer of customerList; let i = index" [customer]="customer" (customerChange)="onCustomerChange($event, i)">
     </op-customer-section>
 
     <div class="row">

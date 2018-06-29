@@ -14,6 +14,7 @@ import { CustomerDetailEditComponent } from './components/customer-detail/custom
 import { CustomerDetailViewComponent } from './components/customer-detail/customer-detail-view.component';
 import { SelectComponent } from './components/inputs/select.component';
 import { AutoCompleteComponent } from './components/inputs/auto-complete.component';
+import { BeFasterPipe } from './components/be-faster.pipe';
 
 @NgModule({
     declarations: [
@@ -24,6 +25,7 @@ import { AutoCompleteComponent } from './components/inputs/auto-complete.compone
         CustomerDetailViewComponent,
         CustomerSectionComponent,
         SelectComponent,
+        BeFasterPipe,
     ],
     imports: [
         BrowserModule,

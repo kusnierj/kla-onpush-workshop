@@ -1,4 +1,4 @@
-import { Component, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Component, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges, OnInit, Output, EventEmitter } from '@angular/core';
 import { Customer, Lookup } from '../../model';
 import { CustomerTypeService } from '../../services/customer-type.service';
 import { IndustryService } from '../../services/industry.service';
@@ -10,6 +10,7 @@ import { IndustryService } from '../../services/industry.service';
 })
 export class CustomerDetailEditComponent implements OnChanges {
     @Input() public customer: Customer;
+    @Output() customerChange = new EventEmitter<Customer>();
 
     public mutableCustomer: Customer;
 
@@ -26,7 +27,7 @@ export class CustomerDetailEditComponent implements OnChanges {
     }
 
     public save(): void {
-        this.customer = this.mutableCustomer;
+        this.customerChange.emit(this.mutableCustomer);
     }
 
     public cancel(): void {

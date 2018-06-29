@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Customer } from './model';
 import { CustomerService } from './services/customer.service';
+import { debug } from 'util';
 
 @Component({
   selector: 'app-root',
@@ -22,5 +23,10 @@ export class AppComponent implements OnInit {
     public ngOnInit(): void {
         this.customerList = [];
         this.loadCustomers(500);
+    }
+
+    public onCustomerChange(changedCustomer: Customer, index: number) {
+        debugger;
+        changedCustomer && this.customerList && Object.assign(this.customerList[index], changedCustomer);
     }
 }
