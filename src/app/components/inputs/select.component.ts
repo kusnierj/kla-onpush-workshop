@@ -2,7 +2,7 @@ import { Component, Input, ChangeDetectionStrategy, EventEmitter, Output } from 
 import { Lookup } from '../../model';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'op-select',
     template: `
         <select [(ngModel)]="id">

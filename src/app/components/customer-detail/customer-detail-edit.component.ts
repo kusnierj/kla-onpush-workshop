@@ -4,7 +4,7 @@ import { CustomerTypeService } from '../../services/customer-type.service';
 import { IndustryService } from '../../services/industry.service';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'op-customer-detail-edit',
     templateUrl: 'customer-detail-edit.component.html',
 })

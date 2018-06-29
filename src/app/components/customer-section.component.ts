@@ -3,7 +3,7 @@ import { Customer } from '../model';
 import { CustomerService } from '../services/customer.service';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'op-customer-section',
     templateUrl: 'customer-section.component.html',
 })

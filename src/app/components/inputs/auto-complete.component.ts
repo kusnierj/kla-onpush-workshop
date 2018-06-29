@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output, OnChan
 import { Lookup } from '../../model';
 
 @Component({
-    changeDetection: ChangeDetectionStrategy.Default,
+    changeDetection: ChangeDetectionStrategy.OnPush,
     selector: 'op-auto-complete',
     template: `
         <input type="text" [ngModel]="text" (ngModelChange)="changeText($event)" />
