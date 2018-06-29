@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Lookup } from '../model';
+import { Lookup, LookupService } from '../model';
 import { WordService } from './word.service';
+import { map, delay } from 'rxjs/operators';
 
 @Injectable()
-export class IndustryService {
+export class IndustryService implements LookupService {
     private staticList: Lookup[] = [
         { id: 1, text: 'Software' },
         { id: 2, text: 'Bank' },
@@ -23,10 +24,10 @@ export class IndustryService {
     ) {
         // Build an extra 100 industries for testing purposes
         this.additionalGibberishIndustries = [];
-        for (let i = 0; i < 100; i++) {
+        for (let i = 0; i < 10000; i++) {
             this.additionalGibberishIndustries.push({
                 id: this.additionalGibberishIndustries.length + this.staticList.length + 1,
-                text: wordService.getRandomWord(),
+                text: wordService.build(3),
             });
         }
     }
@@ -36,5 +37,27 @@ export class IndustryService {
      */
     public getAll(): Observable<Lookup[]> {
         return Observable.of([...this.staticList, ...this.additionalGibberishIndustries]);
+    }
+
+    /**
+     * Simulates HTTP request.
+     */
+    public searchByText(text: string): Observable<Lookup[]> {
+        return this.getAll()
+            .pipe(
+                delay(100),
+                map(result => result.filter(x => x.text.toLowerCase().startsWith(text.toLowerCase()))),
+            );
+    }
+
+    /**
+     * Simulates HTTP request.
+     */
+    public findById(id: number): Observable<Lookup> {
+        return this.getAll()
+            .pipe(
+                delay(100),
+                map(result => result.find(x => x.id === id)),
+            );
     }
 }

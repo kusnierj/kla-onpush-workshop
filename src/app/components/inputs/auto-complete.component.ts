@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Input, ChangeDetectionStrategy, Output, OnChanges, SimpleChanges } from '@angular/core';
-import { Lookup } from '../../model';
+import { Lookup, LookupService } from '../../model';
+import { BaseUnsubscribeComponent } from '../base-unsubscribe.component';
+import { Subscription } from 'rxjs';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.Default,
@@ -11,30 +13,43 @@ import { Lookup } from '../../model';
         </ul>
     `
 })
-export class AutoCompleteComponent implements OnChanges {
-    @Input() public items: Lookup[];
+export class AutoCompleteComponent extends BaseUnsubscribeComponent implements OnChanges {
+    @Input() public itemService: LookupService;
     @Input() public id: number;
     @Output() public idChange = new EventEmitter<number>();
 
     public text: string;
     public matches: Lookup[];
+    private searchObservable: Subscription;
+
+    constructor() { super(); }
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (changes.id) {
-            const found = this.items.find(x => x.id === this.id);
-            if (found) {
-                this.text = found.text;
-            }
+            this.itemService.findById(this.id)
+                .takeUntil(this.ngUnsubscribe)
+                .subscribe(found => {
+                    if (found) {
+                        this.text = found.text;
+                    }
+                });
         }
     }
 
     public changeText(newText: string): void {
         this.text = newText;
-        const found = this.items.find(x => x.text.toLowerCase() === newText.toLowerCase());
-        this.idChange.emit(found ? found.id : null);
 
-        this.matches = this.items
-            .filter(x => x.text.toLowerCase().startsWith(newText.toLowerCase()))
-            .slice(0, 9);
+        // Cancel the previous query
+        if (this.searchObservable) { this.searchObservable.unsubscribe(); }
+
+        this.searchObservable = this.itemService
+            .searchByText(newText)
+            .takeUntil(this.ngUnsubscribe)
+            .subscribe(matches => {
+                const exactMatch = matches.find(x => x.text.toLowerCase() === newText.toLowerCase());
+                this.idChange.emit(exactMatch ? exactMatch.id : null);
+
+                this.matches = matches.slice(0, 9);
+            })
     }
 }

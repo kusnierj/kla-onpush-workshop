@@ -1,3 +1,5 @@
+import { Observable } from "rxjs";
+
 export interface Customer {
     customer_id: number;
     name: string;
@@ -18,6 +20,12 @@ export interface Customer {
 export interface Lookup {
     id: number;
     text: string;
+}
+
+export interface LookupService {
+    getAll(): Observable<Lookup[]>;
+    searchByText(text: string): Observable<Lookup[]>;
+    findById(id: number): Observable<Lookup>;
 }
 
 export const WORD_LIST: string[] = [

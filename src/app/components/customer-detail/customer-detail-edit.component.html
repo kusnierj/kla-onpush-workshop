@@ -48,7 +48,7 @@
     <div class="col-md-6">
         <op-column label="Industry:">
             <op-auto-complete
-                [items]="industryService.getAll() | async"
+                [itemService]="industryService"
                 [(id)]="mutableCustomer.industry_id"
             ></op-auto-complete>
         </op-column>
