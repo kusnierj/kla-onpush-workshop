@@ -3,7 +3,7 @@
         <div class="panel-header">
             <div class="row">
                 <div class="col-sm-8">
-                    {{ customer.name }}
+                    <span class="header-text">{{ customer.name }}</span>
 
                     <div class="badge badge-info" *ngIf="customer.related_customer_ids?.length >= 1">{{customer.related_customer_ids?.length}}</div>
                 </div>
@@ -21,6 +21,8 @@
             <ng-template #readOnlyTpl>
                 <op-customer-detail-view [customer]="customer"></op-customer-detail-view>
             </ng-template>
+
+            <hr/>
 
             <!-- TODO: Hide this button while editing, show it when done -->
             <button class="btn right-align" (click)="isEdit = !isEdit">{{ isEdit ? "View" : "Edit" }}</button>
