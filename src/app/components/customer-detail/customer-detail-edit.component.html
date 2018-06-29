@@ -38,10 +38,21 @@
 </div>
 <div class="row">
     <div class="col-md-6">
-        <op-column label="Type:"><input type="text" [(ngModel)]="mutableCustomer.customer_type_id" /></op-column>
+        <op-column label="Type:">
+            <op-select
+                [items]="customerTypeService.getAll() | async"
+                [(id)]="mutableCustomer.customer_type_id"
+            ></op-select>
+            <!-- <input type="text" [(ngModel)]="mutableCustomer.customer_type_id" /> -->
+        </op-column>
     </div>
     <div class="col-md-6">
-        <op-column label="Industry:"><input type="text" [(ngModel)]="mutableCustomer.industry_id" /></op-column>
+        <op-column label="Industry:">
+            <op-auto-complete
+                [items]="industryService.getAll() | async"
+                [(id)]="mutableCustomer.industry_id"
+            ></op-auto-complete>
+        </op-column>
     </div>
 </div>
 <div class="row">

@@ -21,6 +21,6 @@ export class AppComponent implements OnInit {
 
     public ngOnInit(): void {
         this.customerList = [];
-        this.loadCustomers(500);
+        this.loadCustomers(100);
     }
 }

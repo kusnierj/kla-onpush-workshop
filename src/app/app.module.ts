@@ -12,14 +12,18 @@ import { IndustryService } from './services/industry.service';
 import { WordService } from './services/word.service';
 import { CustomerDetailEditComponent } from './components/customer-detail/customer-detail-edit.component';
 import { CustomerDetailViewComponent } from './components/customer-detail/customer-detail-view.component';
+import { SelectComponent } from './components/inputs/select.component';
+import { AutoCompleteComponent } from './components/inputs/auto-complete.component';
 
 @NgModule({
     declarations: [
         AppComponent,
+        AutoCompleteComponent,
         ColumnComponent,
         CustomerDetailEditComponent,
         CustomerDetailViewComponent,
         CustomerSectionComponent,
+        SelectComponent,
     ],
     imports: [
         BrowserModule,

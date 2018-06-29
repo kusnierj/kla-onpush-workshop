@@ -1,5 +1,7 @@
-import { Component, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges } from '@angular/core';
-import { Customer } from '../../model';
+import { Component, Input, ChangeDetectionStrategy, OnChanges, SimpleChanges, OnInit } from '@angular/core';
+import { Customer, Lookup } from '../../model';
+import { CustomerTypeService } from '../../services/customer-type.service';
+import { IndustryService } from '../../services/industry.service';
 
 @Component({
     changeDetection: ChangeDetectionStrategy.Default,
@@ -10,6 +12,11 @@ export class CustomerDetailEditComponent implements OnChanges {
     @Input() public customer: Customer;
 
     public mutableCustomer: Customer;
+
+    constructor(
+        public customerTypeService: CustomerTypeService,
+        public industryService: IndustryService,
+    ) {}
 
     public ngOnChanges(changes: SimpleChanges): void {
         if (changes.customer) {

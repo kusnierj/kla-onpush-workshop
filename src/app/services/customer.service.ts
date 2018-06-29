@@ -1,16 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
-import { Customer } from '../model';
+import { Customer, Lookup } from '../model';
 import { WordService } from './word.service';
+import { CustomerTypeService } from './customer-type.service';
+import { IndustryService } from './industry.service';
 
 @Injectable()
 export class CustomerService {
     private nextCustomerId = 1;
     private allCustomers: Customer[] = [];
+    private allCustomerTypes: Lookup[];
+    private allIndustries: Lookup[];
 
     constructor(
         private wordService: WordService,
-    ) {}
+        customerTypeService: CustomerTypeService,
+        industryService: IndustryService,
+    ) {
+        customerTypeService.getAll().subscribe(x => this.allCustomerTypes = x);
+        industryService.getAll().subscribe(x => this.allIndustries = x);
+    }
 
     /**
      * Simulates HTTP request.
@@ -27,6 +36,9 @@ export class CustomerService {
                 }
             }
 
+            const customerTypeIndex = Math.floor(Math.random() * this.allCustomerTypes.length);
+            const industryIndex = Math.floor(Math.random() * this.allIndustries.length);
+
             customerList.push({
                 customer_id: this.nextCustomerId++,
                 name: this.wordService.build(2),
@@ -37,8 +49,8 @@ export class CustomerService {
                 state: 'Michigan',
                 zip: this.wordService.buildNumberString(5) + '-' + this.wordService.buildNumberString(4),
 
-                customer_type_id: 1,
-                industry_id: 1,
+                customer_type_id: this.allCustomerTypes[customerTypeIndex].id,
+                industry_id: this.allIndustries[industryIndex].id,
                 is_active: true,
 
                 related_customer_ids: relationIds
