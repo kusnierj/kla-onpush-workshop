@@ -24,7 +24,6 @@
 
             <hr/>
 
-            <!-- TODO: Hide this button while editing, show it when done -->
             <button class="btn right-align" (click)="isEdit = !isEdit">{{ isEdit ? "View" : "Edit" }}</button>
 
             <op-customer-section *ngFor="let customerId of customer.related_customer_ids" [customer]="findCustomer(customerId)" [isExpanded]="false"></op-customer-section>
